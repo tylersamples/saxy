@@ -34,6 +34,10 @@ defmodule Saxy.Encoder do
     [?\s, 'standalone', ?=, ?", "yes", ?"]
   end
 
+  defp element([]), do: []
+
+  defp element([head | tail]), do: [element(head) | element(tail)]
+
   defp element({tag_name, attributes, :empty}) do
     [start_tag(tag_name, attributes), ?/, ?>]
   end
