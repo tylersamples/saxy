@@ -27,7 +27,9 @@ defmodule Saxy.XML do
           children :: [content]
         }
 
-  @type content() :: element() | characters() | cdata() | ref() | comment()
+  @type content_types() :: element() | characters() | cdata() | ref() | comment()
+
+  @type content() :: content_types() | [content_types()]
 
   @compile {
     :inline,
